@@ -1,19 +1,22 @@
 import './globals.css'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import type { ReactNode } from 'react'
+import { Footer } from '#components/footer'
+import { Nav } from '#components/nav'
+import { cn } from '#lib/utils'
+import type { LayoutProps } from '#types/props'
 
-export default function RootLayout({
-  children
-}: Readonly<{
-  children: ReactNode
-}>) {
+export default async function Layout({ children }: LayoutProps) {
   return (
-    <html lang='en'>
+    <html lang='ja'>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        className={cn(GeistSans.variable, GeistMono.variable, 'antialiased')}
       >
-        {children}
+        <main className='mt-8 mx-auto max-w-xl w-10/12'>
+          <Nav />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   )
