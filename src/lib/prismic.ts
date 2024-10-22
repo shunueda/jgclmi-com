@@ -14,7 +14,14 @@ export async function getSingleByType(type: SinglePrismicType) {
 }
 
 export async function getAllByType(type: RepeatablePrismicType) {
-  return await client.getAllByType(type)
+  const results = await client.getAllByType(type)
+  return results.sort((a, b) =>
+    a.last_publication_date > b.last_publication_date ? -1 : 1
+  )
+}
+
+export async function getById(id: string) {
+  return await client.getByID(id)
 }
 
 export function asTextLines(element: RichTextField) {

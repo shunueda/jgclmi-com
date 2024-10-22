@@ -4,8 +4,8 @@ import { AspectRatio } from '#components/ui/aspect-ratio'
 
 interface Props {
   src?: string
-  title: string | null
-  subtitle: string | null
+  title: string | ReactNode | null
+  subtitle: string | ReactNode | null
   children: ReactNode
 }
 
@@ -19,7 +19,7 @@ export default function Template({ src, title, subtitle, children }: Props) {
       )}
       <section className='mb-4'>
         <h1>{title}</h1>
-        <h4>{subtitle}</h4>
+        <h4 className='mt-2'>{subtitle}</h4>
       </section>
       {children}
     </main>

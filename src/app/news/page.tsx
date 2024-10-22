@@ -7,15 +7,14 @@ import {
   TableRow
 } from '@/components/ui/table'
 import { asText } from '@prismicio/client'
+import Link from 'next/link'
 import Template from '#components/template'
 import { RepeatablePrismicType } from '#constants/PrismicType'
 import { formatDate } from '#lib/date'
 import { getAllByType } from '#lib/prismic'
 
 export default async function Page() {
-  const news = (await getAllByType(RepeatablePrismicType.NEWS)).sort((a, b) =>
-    a.last_publication_date > b.last_publication_date ? -1 : 1
-  )
+  const news = await getAllByType(RepeatablePrismicType.NEWS)
   return (
     <Template title='News' subtitle='過去のニュース一覧'>
       <Table>
@@ -31,7 +30,9 @@ export default async function Page() {
               <TableCell className='text-center text-xs'>
                 {formatDate(new Date(it.last_publication_date))}
               </TableCell>
-              <TableCell>{asText(it.data.title)}</TableCell>
+              <TableCell>
+                <Link href={`/article/${it.id}`}>{asText(it.data.title)}</Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
