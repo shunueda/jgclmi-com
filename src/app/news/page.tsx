@@ -12,11 +12,13 @@ import Template from '#components/template'
 import { RepeatablePrismicType } from '#constants/PrismicType'
 import { formatDate } from '#lib/date'
 import { getAllByType } from '#lib/prismic'
+import { generateMetadata } from './layout'
 
 export default async function Page() {
   const news = await getAllByType(RepeatablePrismicType.NEWS)
+  const { description } = await generateMetadata()
   return (
-    <Template title='News' subtitle='過去のニュース一覧'>
+    <Template title='News' subtitle={description}>
       <Table>
         <TableHeader>
           <TableRow>
