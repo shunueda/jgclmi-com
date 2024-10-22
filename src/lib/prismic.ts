@@ -6,7 +6,7 @@ import type {
   SinglePrismicType
 } from '#constants/PrismicType'
 
-const client = createClient(Endpoint.PRISMIC)
+const client = createClient(Endpoint.PRISMIC_CDN_API)
 
 export async function getSingleByType(type: SinglePrismicType) {
   const { results } = await client.getByType(type)

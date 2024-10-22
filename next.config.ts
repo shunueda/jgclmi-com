@@ -1,11 +1,11 @@
 import type { NextConfig } from 'next'
+import { Endpoint } from '#constants/Endpoint'
 
 export default {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.prismic.io'
+        hostname: new URL(Endpoint.PRISMIC_IMAGES).hostname
       }
     ]
   },

@@ -3,12 +3,10 @@ import { asLink, asText } from '@prismicio/client'
 import { MailIcon, MapPinIcon, VideoIcon } from 'lucide-react'
 import Link from 'next/link'
 import Template from '#components/template'
-import { Table, TableBody, TableCell, TableRow } from '#components/ui/table'
 import {
   RepeatablePrismicType,
   SinglePrismicType
 } from '#constants/PrismicType'
-import { formatDate } from '#lib/date'
 import { asTextLines, getAllByType, getSingleByType } from '#lib/prismic'
 import { cn } from '#lib/utils'
 
@@ -18,7 +16,9 @@ export default async function Home() {
   const news = (await getAllByType(RepeatablePrismicType.NEWS)).filter(
     ({ data }) => new Date(data.display_until_date) >= today
   )
-  const articles = await getAllByType(RepeatablePrismicType.ARTICLE)
+  const articles = (await getAllByType(RepeatablePrismicType.ARTICLE)).filter(
+    ({ data }) => data.pickup
+  )
   const email = asLink(data.email)
   const links = [
     {
@@ -30,6 +30,16 @@ export default async function Home() {
       icon: <VideoIcon color={'#698cd7'} />,
       title: 'Zoomリンク',
       url: asLink(data.zoom_link)
+    }
+  ]
+  const lists = [
+    {
+      title: 'ニュース',
+      items: news
+    },
+    {
+      title: '注目記事',
+      items: articles
     }
   ]
   return (
@@ -57,47 +67,25 @@ export default async function Home() {
           ))}
         </div>
       </section>
-      {news.length > 0 && (
-        <section className='mt-8'>
-          <h2>ニュース</h2>
-          <Table className='mt-4'>
-            <TableBody>
-              {news.map(it => (
-                <TableRow key={it.id}>
-                  <TableCell className=' text-xs'>
-                    ~{formatDate(new Date(it.data.display_until_date))}
-                  </TableCell>
-                  <TableCell>
-                    <Link href={`/article/${it.id}`}>
-                      {asText(it.data.title)}
+      {lists.map(
+        ({ title, items }) =>
+          items.length > 0 && (
+            <section className='mt-8' key={title}>
+              <h2>{title}</h2>
+              <ul className='mt-2'>
+                {items.map(({ id, data }) => (
+                  <li key={id}>
+                    <Link
+                      href={`/article/${id}`}
+                      className='block text-sm py-1'
+                    >
+                      ・{asText(data.title)}
                     </Link>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </section>
-      )}
-      {articles.length > 0 && (
-        <section className='mt-8'>
-          <h2>注目記事</h2>
-          <Table className='mt-4'>
-            <TableBody>
-              {articles.map(it => (
-                <TableRow key={it.id}>
-                  <TableCell className=' text-xs'>
-                    {formatDate(new Date(it.last_publication_date))}
-                  </TableCell>
-                  <TableCell>
-                    <Link href={`/article/${it.id}`}>
-                      {asText(it.data.title)}
-                    </Link>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </section>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
       )}
       <section className='mt-8'>
         <h2>お問合せ</h2>
