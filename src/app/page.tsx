@@ -28,11 +28,11 @@ export default async function Home() {
           className='object-cover'
         />
       </AspectRatio>
-      <section className='mt-4'>
+      <section className='my-8'>
         <h1>{asText(data.title)}</h1>
         <h4>{asText(data.subtitle)}</h4>
       </section>
-      <section className='mt-4'>
+      <section>
         <div className='whitespace-break-spaces'>
           {asTextLines(data.first_section_body)}
         </div>
@@ -47,7 +47,7 @@ export default async function Home() {
           ))}
         </ul>
       </section>
-      <section className='mt-4'>
+      <section className='mt-8'>
         <h2>お問合せ</h2>
         <p className='mt-4'>
           下記のメールアドレスより、お気軽にご連絡ください。
