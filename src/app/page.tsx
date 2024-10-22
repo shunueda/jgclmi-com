@@ -75,11 +75,9 @@ export default async function Home() {
               <ul className='mt-2'>
                 {items.map(({ id, data }) => (
                   <li key={id}>
-                    <Link
-                      href={`/article/${id}`}
-                      className='block text-sm py-1'
-                    >
-                      ・{asText(data.title)}
+                    <Link href={`/article/${id}`} className='flex text-sm py-1'>
+                      <p>・</p>
+                      <p>{asText(data.title)}</p>
                     </Link>
                   </li>
                 ))}
