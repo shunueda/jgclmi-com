@@ -1,3 +1,4 @@
+import { EOL } from 'node:os'
 import { type RichTextField, asText, createClient } from '@prismicio/client'
 import { Endpoint } from '#constants/Endpoint'
 import type {
@@ -18,6 +19,6 @@ export async function getAllByType(type: RepeatablePrismicType) {
 
 export function asTextLines(element: RichTextField) {
   return asText(element, {
-    separator: '\n\n'
+    separator: EOL.repeat(2)
   })
 }
