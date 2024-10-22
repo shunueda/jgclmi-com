@@ -10,6 +10,8 @@ import { getSingleByType } from '#lib/prismic'
 import { cn } from '#lib/utils'
 import type { LayoutProps } from '#types/props'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   const { data } = await getSingleByType(SinglePrismicType.HOME)
   return {
