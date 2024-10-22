@@ -1,7 +1,6 @@
 import { asLink, asText } from '@prismicio/client'
 import { MailIcon, MoveUpRightIcon } from 'lucide-react'
-import Image from 'next/image'
-import { AspectRatio } from '#components/ui/aspect-ratio'
+import Template from '#components/template'
 import { SinglePrismicType } from '#constants/PrismicType'
 import { asTextLines, getSingleByType } from '#lib/prismic'
 
@@ -19,19 +18,11 @@ export default async function Home() {
     }
   ]
   return (
-    <main>
-      <AspectRatio ratio={16 / 9}>
-        <Image
-          src={data.header.url}
-          alt={data.header.alt || ''}
-          fill
-          className='object-cover'
-        />
-      </AspectRatio>
-      <section className='my-8'>
-        <h1>{asText(data.title)}</h1>
-        <h4>{asText(data.subtitle)}</h4>
-      </section>
+    <Template
+      title={asText(data.title)}
+      subtitle={asText(data.title)}
+      headerSrc={data.header.url}
+    >
       <section>
         <div className='whitespace-break-spaces'>
           {asTextLines(data.first_section_body)}
@@ -59,6 +50,6 @@ export default async function Home() {
           </a>
         </p>
       </section>
-    </main>
+    </Template>
   )
 }
