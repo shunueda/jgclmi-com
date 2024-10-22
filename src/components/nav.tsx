@@ -12,6 +12,10 @@ const items: NavItem[] = [
     href: '/'
   },
   {
+    label: '記事',
+    href: '/article'
+  },
+  {
     label: 'ニュース',
     href: '/news'
   },

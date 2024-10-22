@@ -41,7 +41,7 @@ export default async function Home() {
         <div className='whitespace-break-spaces'>
           {asTextLines(data.first_section_body)}
         </div>
-        <div className='mt-8 flex'>
+        <div className='mt-4 flex'>
           {links.map(({ title, url, icon }, i) => (
             <Button
               key={title}
