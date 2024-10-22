@@ -1,6 +1,8 @@
 import { MoveUpRightIcon } from 'lucide-react'
 import pkg from '~/package.json'
 import { Separator } from '#components/ui/separator'
+import { SinglePrismicType } from '#constants/PrismicType'
+import { getSingleByType } from '#lib/prismic'
 
 const links = [
   {
@@ -18,6 +20,7 @@ const links = [
 ]
 
 export async function Footer() {
+  const { data } = await getSingleByType(SinglePrismicType.HOME)
   return (
     <footer className='text-gray-500 text-xs pt-4'>
       <Separator className='my-4' />
@@ -32,7 +35,7 @@ export async function Footer() {
         ))}
       </ul>
       <Separator className='my-4' />
-      <div className='flex h-4 items-center space-x-4 text-xs'>
+      <div className='flex h-4 items-center space-x-4 text-xs mb-8'>
         <div>ニューヨークめぐみ教会</div>
         <Separator orientation='vertical' />
         <div>

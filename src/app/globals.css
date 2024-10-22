@@ -64,7 +64,7 @@ body {
 
 @layer base {
   * {
-    @apply border-border font-sans;
+    @apply border-border font-sans text-gray-600;
   }
 
   body {
@@ -72,15 +72,15 @@ body {
   }
 
   h1 {
-    @apply text-2xl font-bold tracking-tighter;
+    @apply text-2xl font-bold tracking-tighter text-gray-700;
   }
 
   h2 {
-    @apply text-xl font-semibold tracking-tighter text-gray-600;
+    @apply text-xl font-semibold tracking-tighter;
   }
 
   h3 {
-    @apply text-lg font-semibold tracking-tighter text-gray-400;
+    @apply text-lg font-semibold tracking-tighter;
   }
 
   h4 {
