@@ -3,26 +3,21 @@ import type { ReactNode } from 'react'
 import { AspectRatio } from '#components/ui/aspect-ratio'
 
 interface Props {
-  headerSrc?: string
+  src?: string
   title: string | null
   subtitle: string | null
   children: ReactNode
 }
 
-export default function Template({
-  headerSrc,
-  title,
-  subtitle,
-  children
-}: Props) {
+export default function Template({ src, title, subtitle, children }: Props) {
   return (
     <main>
-      {headerSrc && (
+      {src && (
         <AspectRatio ratio={16 / 9} className='mb-8'>
-          <Image src={headerSrc} alt='' fill className='object-cover' />
+          <Image src={src} alt='' fill className='object-cover' />
         </AspectRatio>
       )}
-      <section className='mb-8'>
+      <section className='mb-4'>
         <h1>{title}</h1>
         <h4>{subtitle}</h4>
       </section>
