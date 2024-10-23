@@ -27,13 +27,13 @@ export default async function Page() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {news.map(it => (
-            <TableRow key={it.id}>
+          {news.map(({ id, last_publication_date, data }) => (
+            <TableRow key={id}>
               <TableCell className='text-center text-xs'>
-                {formatDate(new Date(it.last_publication_date))}
+                {formatDate(new Date(last_publication_date))}
               </TableCell>
               <TableCell>
-                <Link href={`/article/${it.id}`}>{asText(it.data.title)}</Link>
+                <Link href={`/article/${id}`}>{asText(data.title)}</Link>
               </TableCell>
             </TableRow>
           ))}
