@@ -7,6 +7,9 @@ import {
   TableRow
 } from '@/components/ui/table'
 import { type RichTextField, asText } from '@prismicio/client'
+import { MoveUpRightIcon } from 'lucide-react'
+import Link from 'next/link'
+import { Row } from '#components/row'
 import { Template } from '#components/template'
 import { SinglePrismicType } from '#constants/PrismicType'
 import { formatDate, getClosestSunday } from '#lib/date'
@@ -26,7 +29,11 @@ export default async function Page() {
   let pivot = getClosestSunday()
   return (
     <Template title='Manamail' subtitle={asText(data.about)}>
-      <Table>
+      <Row>
+        <MoveUpRightIcon size={16} />
+        <Link href='/manna'>旧グリニッチ福音キリスト教会・Mannaアーカイブ</Link>
+      </Row>
+      <Table className='mt-4'>
         <TableHeader>
           <TableRow>
             <TableHead className='text-center'>公開日</TableHead>
