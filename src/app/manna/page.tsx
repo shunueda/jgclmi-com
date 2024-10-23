@@ -6,7 +6,10 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
+import { MoveUpRightIcon } from 'lucide-react'
+import Link from 'next/link'
 import data from '~/public/manna/data.json'
+import { Row } from '#components/row'
 import { Template } from '#components/template'
 import { range } from '#lib/utils'
 
@@ -18,6 +21,12 @@ export default async function Page() {
       title='Manna'
       subtitle='旧グリニッチ福音キリスト教会・Mannaアーカイブ'
     >
+      <Row>
+        <MoveUpRightIcon size={14} />
+        <Link href='/manamail' className='text-sm'>
+          現ニューヨークめぐみ教会・マナメール
+        </Link>
+      </Row>
       <Table className='mt-4'>
         <TableHeader>
           <TableRow>
@@ -39,9 +48,11 @@ export default async function Page() {
               }
               return (
                 <TableRow key={number}>
-                  <TableCell className='text-center'>{number}</TableCell>
-                  <TableCell className='text-center'>{date}</TableCell>
-                  <TableCell className='text-center'>
+                  <TableCell className='text-center text-xs'>
+                    {number}
+                  </TableCell>
+                  <TableCell className='text-center text-xs'>{date}</TableCell>
+                  <TableCell className='text-center font-semibold'>
                     <a
                       target='_blank'
                       href={`/manna/manna${number.toString().padStart(3, '0')}.pdf`}
@@ -50,7 +61,9 @@ export default async function Page() {
                       {title}
                     </a>
                   </TableCell>
-                  <TableCell className='text-center'>{topics}</TableCell>
+                  <TableCell className='text-center text-xs'>
+                    {topics}
+                  </TableCell>
                 </TableRow>
               )
             })}

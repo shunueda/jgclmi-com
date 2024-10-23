@@ -30,8 +30,10 @@ export default async function Page() {
   return (
     <Template title='Manamail' subtitle={asText(data.about)}>
       <Row>
-        <MoveUpRightIcon size={16} />
-        <Link href='/manna'>旧グリニッチ福音キリスト教会・Mannaアーカイブ</Link>
+        <MoveUpRightIcon size={14} />
+        <Link href='/manna' className='text-sm'>
+          旧グリニッチ福音キリスト教会・Mannaアーカイブ
+        </Link>
       </Row>
       <Table className='mt-4'>
         <TableHeader>
@@ -55,7 +57,7 @@ export default async function Page() {
                   <TableCell className='text-center text-xs'>
                     {formatDate(pivot)}
                   </TableCell>
-                  <TableCell className='text-center'>
+                  <TableCell className='text-center font-semibold'>
                     <a href={pdf.url} target='_blank' rel='noreferrer'>
                       {asText(title)}
                     </a>
