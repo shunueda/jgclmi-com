@@ -7,7 +7,7 @@ import {
   TableRow
 } from '@/components/ui/table'
 import { type RichTextField, asText } from '@prismicio/client'
-import Template from '#components/template'
+import { Template } from '#components/template'
 import { SinglePrismicType } from '#constants/PrismicType'
 import { formatDate, getClosestSunday } from '#lib/date'
 import { getSingleByType } from '#lib/prismic'

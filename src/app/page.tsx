@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { asLink, asText } from '@prismicio/client'
 import { MailIcon, MapPinIcon, VideoIcon } from 'lucide-react'
 import Link from 'next/link'
-import Template from '#components/template'
+import { Template } from '#components/template'
 import {
   RepeatablePrismicType,
   SinglePrismicType

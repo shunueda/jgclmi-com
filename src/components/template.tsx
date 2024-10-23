@@ -7,9 +7,10 @@ interface Props {
   title: string | ReactNode | null
   subtitle: string | ReactNode | null
   children: ReactNode
+  className?: string
 }
 
-export default function Template({ src, title, subtitle, children }: Props) {
+export function Template({ src, title, subtitle, children, className }: Props) {
   return (
     <main>
       {src && (
@@ -21,7 +22,7 @@ export default function Template({ src, title, subtitle, children }: Props) {
         <h1>{title}</h1>
         <h4>{subtitle}</h4>
       </section>
-      {children}
+      <section className={className}>{children}</section>
     </main>
   )
 }

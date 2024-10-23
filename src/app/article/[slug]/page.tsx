@@ -1,6 +1,6 @@
 import { asText } from '@prismicio/client'
 import { PrismicRichText } from '@prismicio/react'
-import Template from '#components/template'
+import { Template } from '#components/template'
 import { formatDate } from '#lib/date'
 import { getById } from '#lib/prismic'
 import { cn } from '#lib/utils'

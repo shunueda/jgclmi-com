@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/table'
 import { asText } from '@prismicio/client'
 import Link from 'next/link'
-import Template from '#components/template'
+import { Template } from '#components/template'
 import { RepeatablePrismicType } from '#constants/PrismicType'
 import { formatDate } from '#lib/date'
 import { getAllByType } from '#lib/prismic'
