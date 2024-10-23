@@ -35,9 +35,8 @@ export default async function Page() {
                 number,
                 date: '不明',
                 title: '不明',
-                topic: '不明'
+                topics: '---'
               }
-              const padded = number.toString().padStart(3, '0')
               return (
                 <TableRow key={number}>
                   <TableCell className='text-center'>{number}</TableCell>
@@ -45,7 +44,7 @@ export default async function Page() {
                   <TableCell className='text-center'>
                     <a
                       target='_blank'
-                      href={`/manna/manna${padded}.pdf`}
+                      href={`/manna/manna${number.toString().padStart(3, '0')}.pdf`}
                       rel='noreferrer'
                     >
                       {title}
