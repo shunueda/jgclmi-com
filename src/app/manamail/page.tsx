@@ -12,8 +12,8 @@ import Link from 'next/link'
 import { Row } from '#components/row'
 import { Template } from '#components/template'
 import { SinglePrismicType } from '#constants/PrismicType'
-import { formatDate, getClosestSunday } from '#lib/date'
-import { getSingleByType } from '#lib/prismic'
+import { format, getClosestSunday } from '#lib/date'
+import { asTextSafe, getSingleByType } from '#lib/prismic'
 
 interface Manamail {
   title: RichTextField
@@ -26,7 +26,7 @@ interface Manamail {
 
 export default async function Page() {
   const { data } = await getSingleByType(SinglePrismicType.MANAMAIL)
-  let pivot = getClosestSunday()
+  const pivot = getClosestSunday()
   return (
     <Template title='Manamail' subtitle={asText(data.about)}>
       <Row>
@@ -48,22 +48,22 @@ export default async function Page() {
             .reverse()
             .map(({ title, subtitle, date, pdf }: Manamail, index: number) => {
               if (date) {
-                pivot = new Date(date)
+                pivot.setDate(new Date(date).getDate())
               } else if (index !== 0) {
                 pivot.setDate(pivot.getDate() - 7)
               }
               return (
                 <TableRow key={Math.random()}>
                   <TableCell className='text-center text-xs'>
-                    {formatDate(pivot)}
+                    {format(pivot)}
                   </TableCell>
                   <TableCell className='text-center font-semibold'>
                     <a href={pdf.url} target='_blank' rel='noreferrer'>
-                      {asText(title)}
+                      {asTextSafe(title)}
                     </a>
                   </TableCell>
                   <TableCell className='text-center text-xs'>
-                    {asText(subtitle)}
+                    {asTextSafe(subtitle)}
                   </TableCell>
                 </TableRow>
               )

@@ -10,7 +10,7 @@ import { asText } from '@prismicio/client'
 import Link from 'next/link'
 import { Template } from '#components/template'
 import { RepeatablePrismicType } from '#constants/PrismicType'
-import { formatDate } from '#lib/date'
+import { format } from '#lib/date'
 import { getAllByType } from '#lib/prismic'
 import { generateMetadata } from './layout'
 
@@ -30,7 +30,7 @@ export default async function Page() {
           {news.map(({ id, last_publication_date, data }) => (
             <TableRow key={id}>
               <TableCell className='text-center text-xs'>
-                {formatDate(new Date(last_publication_date))}
+                {format(new Date(last_publication_date))}
               </TableCell>
               <TableCell>
                 <Link href={`/article/${id}`}>{asText(data.title)}</Link>

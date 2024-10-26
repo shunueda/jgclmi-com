@@ -24,8 +24,20 @@ export async function getById(id: string) {
   return await client.getByID(id)
 }
 
-export function asTextLines(element: RichTextField) {
-  return asText(element, {
-    separator: EOL.repeat(2)
-  })
+export function asTextLines(element: RichTextField, fallback = '') {
+  try {
+    return asText(element, {
+      separator: EOL.repeat(2)
+    })
+  } catch (_) {
+    return fallback
+  }
+}
+
+export function asTextSafe(element: RichTextField, fallback = '') {
+  try {
+    return asText(element)
+  } catch (_) {
+    return fallback
+  }
 }
