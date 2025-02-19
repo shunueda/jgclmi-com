@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { asLink, asText } from '@prismicio/client'
-import { MailIcon, MapPinIcon, VideoIcon } from 'lucide-react'
+import { MailIcon, MapPinIcon } from 'lucide-react'
 import Link from 'next/link'
 import { Template } from '#components/template'
 import {
@@ -25,11 +25,6 @@ export default async function Home() {
       icon: <MapPinIcon color={'#74d769'} />,
       title: 'Google Map',
       url: asLink(data.google_map_link)
-    },
-    {
-      icon: <VideoIcon color={'#698cd7'} />,
-      title: 'Zoomリンク',
-      url: asLink(data.zoom_link)
     }
   ]
   const lists = [
