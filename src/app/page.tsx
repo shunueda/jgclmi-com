@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import { asLink, asText } from '@prismicio/client'
 import { MailIcon, MapPinIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -7,8 +6,7 @@ import {
   RepeatablePrismicType,
   SinglePrismicType
 } from '#constants/PrismicType'
-import { asTextLines, getAllByType, getSingleByType } from '#lib/prismic'
-import { cn } from '#lib/utils'
+import { getAllByType, getSingleByType } from '#lib/prismic'
 
 export default async function Home() {
   const today = new Date()
@@ -45,21 +43,12 @@ export default async function Home() {
     >
       <section>
         <div className='whitespace-break-spaces'>
-          {asTextLines(data.first_section_body)}
-        </div>
-        <div className='mt-4 flex'>
-          {links.map(({ title, url, icon }, i) => (
-            <Button
-              key={title}
-              className={cn(i !== 0 && 'ml-4')}
-              variant='outline'
-            >
-              {icon}
-              <a href={url || ''} target='_blank' rel='noreferrer'>
-                {title}
-              </a>
-            </Button>
-          ))}
+          笹川雅弘牧師はこのたびNYめぐみ教会での職務を終了し7月に日本へ帰国することになりました。笹川牧師の後任候補が与えられることを祈ってまいり
+          ましたが残念ながらそれがかなわなかったことを受け、リッジウェイ教会はJapanese
+          Ministryの活動を6月いっぱいをもって終了する
+          決定をいたしました。このことに伴いNYめぐみ教会は2025年6月いっぱいをもってCloseすることとなりました。これまでさまざまな形で教会
+          とかかわりを
+          持たれてきた方すべての上に主の豊かな祝福と導きがありますように。
         </div>
       </section>
       {lists.map(

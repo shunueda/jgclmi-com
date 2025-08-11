@@ -2,7 +2,7 @@ $schema: https://json.schemastore.org/lefthook.json
 pre-commit:
   commands:
     type-check:
-      run: pnpm type-check
+      run: npm run type-check
     check:
-      run: pnpm check
+      run: npm run check
       stage_fixed: true
